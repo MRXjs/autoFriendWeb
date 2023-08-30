@@ -21,28 +21,20 @@ const contact = () => {
     setWhileSending(true);
 
     const config = {
-      Host: "smtp.gmail.com",
-      Username: "mysendmailer@gmail.com",
-      Password: "kvwklzldpqdtxxko",
-      To: "mysendmailer@gmail.com",
+      Host: "",
+      Username: "",
+      Password: "",
+      To: "",
       From: `${formData.email}`,
       Subject: `AutoFriend ${formData.name}`,
       Body: `${formData.message}`,
     };
 
-    await window.Email.send(config)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-
-    // await toast.promise(, {
-    //   pending: "Promise is pending",
-    //   success: "Message was successfully👌",
-    //   error: "Something wrong🤯",
-    // });
+    await toast.promise(window.Email.send(config), {
+      pending: "Promise is pending",
+      success: "Message was successfully👌",
+      error: "Something wrong🤯",
+    });
     setWhileSending(false);
   };
 
